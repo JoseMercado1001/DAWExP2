@@ -1,0 +1,114 @@
+<html>
+<head>
+	<style>
+		.BussCard {
+			background-color: #aec6cf;
+			border-style: dashed;
+			height: 300px;
+			width: 550px;
+			margin-bottom: 25px;
+		}
+		.BussCard div {
+			display: flex;
+			align-items: center;
+			flex-flow: column;
+			height: 300px;
+		}
+
+		.BussCard header {
+			display: flex;
+			align-items: center;
+			flex-flow: column;
+			height: 300px;
+		}
+
+		.BussCard header h2{
+			font-size: 30p
+		}
+
+		.BussCard div header{
+			display: flex;
+			align-items: center;
+			flex-flow: row;
+			height: 300px;
+		}
+
+		.BussCard div div{
+			display: flex;
+			width: 475px;
+			align-items: flex-end;
+			flex-flow: column;
+		}
+
+		.BussCard div h4{
+			width: 350px;
+		}
+
+
+	</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+
+  <script type="text/babel">
+    const rootElement = document.getElementById('root');
+
+    /* Business Card component
+     * @param name - the name of the person displayed in the business card
+     * @param email
+     * @param phone
+     * @param headline - a brief description that describes what the person does in 120 characters or less
+     */
+
+    // Add your component here :)
+    const name = 'José de Jesús Mercado Jiménez';
+	const email = 'josemerjim@gmail.com';
+	const phone = '7711156516';
+	const headline = 'A hands on, goals oriented person doing an exam using ReactJS while trying to achive a good grade'
+
+		const BussCard = (props) => {
+			return (
+				<div {...props}/>
+			)
+		}
+
+		BussCard.propTypes = {
+			name: PropTypes.string.isRequired,
+			email: PropTypes.string,
+			phone: PropTypes.string,
+			headline: PropTypes.string,
+		}
+
+    const app = (
+      	<>
+			<BussCard className='BussCard' name={name} email={email} phone={phone} headline={headline}>
+				<div>
+					<header>
+						<img width="25%" src="icon.png"></img>
+						<h2>{name}</h2>
+					</header>
+					<div>
+						<h2>{email}</h2>
+						<h3>{phone}</h3>
+					</div>
+					<h4>{headline}</h4>
+				</div>
+			</BussCard>
+			<BussCard className='BussCard' name={name}>
+				<header>
+						<img width="50%" src="icon.png"/>
+						<h2>{name}</h2>
+					</header>
+			</BussCard>	
+		</>
+    );
+
+    ReactDOM.render(app, rootElement);
+  </script>
+</body>
+</html>
